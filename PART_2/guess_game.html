@@ -1,0 +1,196 @@
+<html>
+    <head>
+    
+        <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png">
+        <link rel="icon" type="image/png" href="img/favicon-32x32.png" sizes="32x32">
+        <title>SAYI TAHMİN OYUNU</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+    </head>
+    <body>
+        <div class="game-container">
+            
+                  
+            <div id="kutu"><h4>SAYI TAHMİN OYUNU</h4>
+          
+                <p id="answer001"></p> 
+               
+               
+             
+              
+               
+                <br>
+                <br>
+               <br>
+               <label >TAHMİNİN:   <input type="text" id="tah" name="fname" ></label><br><br>
+               <br>
+            TAHMİN SAYISI: <input type="text" id="id02" maxlength="0" />
+               <p id="answer002"></p>
+               <button class="kontrol" onclick="check()">Kontrol ET!</button>
+               <br>
+              
+            
+               
+               <p id="answer003"></p>
+              SONUÇ: <input type="text" id="id01" maxlength="0" />
+              <br>
+              <div><a class="animsition-link vale" href="index.html">GERİ DÖN</a></div>
+               <p id="answer004"></p>
+              </form> </div>
+        </div>
+    </div>
+        <script>
+       
+       
+            var rsayi,sayac;
+            var baslat=document.querySelector("#baslat");
+            var tahmin=document.querySelector("#tahmin");
+            var sayi=document.querySelector("#tah");
+         
+
+       
+                sayac=0;
+                var rsayi1= (Math.floor(Math.random() * 9)+1) ; 
+                var rsayi2= Math.floor(Math.random() * 9) ; 
+                var rsayi3= Math.floor(Math.random() * 9) ; 
+                var rsayi4= Math.floor(Math.random() * 9) ; 
+               
+            answer001.innerHTML=rsayi1;
+while (rsayi1==rsayi2) {
+    var rsayi2= Math.floor(Math.random() * 9) ; 
+}
+
+            answer002.innerHTML=rsayi2;
+
+           while(rsayi3==rsayi2||rsayi3==rsayi1) {
+    var rsayi3= Math.floor(Math.random() * 9) ; 
+}
+            answer003.innerHTML=rsayi3;
+           while (rsayi3==rsayi4||rsayi2==rsayi4||rsayi1==rsayi4) {
+        var rsayi4= Math.floor(Math.random() * 9) ; 
+}
+            answer004.innerHTML=rsayi4;
+            var bilgiler = [];
+function check(){
+
+  
+            var amat = tah.value;
+          var i=0;
+            while (i<4) {
+                var res = amat.split('');
+
+            bilgiler.push(res[i]);
+            i++;
+            }
+           
+                
+              
+             if(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi4){
+                
+                window.alert("Tebrikler bildiniz, Sayı:"+""+rsayi1+rsayi2+rsayi3+rsayi4);
+                document.getElementById('id01').value = "+4";
+                bilgiler=[];
+                sayac=0;
+                    }
+                    else if(bilgiler[0]!=rsayi1&&bilgiler[0]!=rsayi2&&bilgiler[0]!=rsayi3&&bilgiler[0]!=rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[1]!=rsayi1&&bilgiler[1]!=rsayi3&&bilgiler[1]!=rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[2]!=rsayi1&&bilgiler[2]!=rsayi2&&bilgiler[2]!=rsayi4&&bilgiler[3]!=rsayi4&&bilgiler[3]!=rsayi3&&bilgiler[3]!=rsayi2&&bilgiler[3]!=rsayi1){
+                        document.getElementById('id01').value = "0";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                        
+                    }
+                else if((bilgiler[0]==rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi4)){
+                        document.getElementById('id01').value = "+3";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+
+                    }
+                 
+                   
+                    else if((bilgiler[0]==rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi2)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi2&&bilgiler[3]==rsayi4)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi4)){
+                        document.getElementById('id01').value = "+2-2";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }  
+              
+                    else if((bilgiler[0]==rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]!=rsayi3)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi4&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi2)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi2)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]!=rsayi2&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi3&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi1&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi4&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi1)){
+                        document.getElementById('id01').value = "+2 -1";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+                  
+                   
+                    else if((bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)){
+                        document.getElementById('id01').value = "+2";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+         
+                   
+                    else if((bilgiler[0]==rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi2)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi2&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi1&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi1&&bilgiler[2]==rsayi2&&bilgiler[3]==rsayi4)){
+                        document.getElementById('id01').value = "+1 -3";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+                  
+                    else if((bilgiler[0]==rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]!=rsayi3)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]==rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi1&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi2&&bilgiler[3]==rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi4)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi1&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)){
+                        document.getElementById('id01').value = "+1 -2";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+                 
+                   
+                   else if((bilgiler[0]==rsayi1&&bilgiler[1]==rsayi1&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi2&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi1&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi2&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]==rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi1&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi4)){
+                       document.getElementById('id01').value = "+1 -1";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+                  
+
+                    else if((bilgiler[0]==rsayi2&&bilgiler[1]==rsayi1&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi2&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi2&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi1&&bilgiler[2]==rsayi2&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi1&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi2)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi2)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi2)){
+                         document.getElementById('id01').value = "-4";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+                  
+                    else if((bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi2)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi2&&bilgiler[3]==rsayi1)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]==rsayi3)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi2&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi2&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi2&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi1)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]==rsayi2)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi1&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi1&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi3)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi3)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi1&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi1&&bilgiler[2]==rsayi4&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi1&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi1&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi2&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi2&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi3&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi3&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]==rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]==rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]==rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi1&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi3&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi2&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi1&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi1&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi4&&bilgiler[1]==rsayi3&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)){
+                        document.getElementById('id01').value = "-2";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+            
+                 else if((bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi2)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi1)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi3)||(bilgiler[0]==rsayi4&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi1&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi2&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi4&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi1&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi3&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi4&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi3&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi2&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)){
+                        document.getElementById('id01').value = "-1";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+                
+                    else if((bilgiler[0]!=rsayi1&&bilgiler[1]==rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]==rsayi4)||(bilgiler[0]!=rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]==rsayi3&&bilgiler[3]!=rsayi4)||(bilgiler[0]==rsayi1&&bilgiler[1]!=rsayi2&&bilgiler[2]!=rsayi3&&bilgiler[3]!=rsayi4)){
+                        document.getElementById('id01').value = "+1";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+                    else {
+                        document.getElementById('id01').value = "-3";
+                        bilgiler=[];
+                        sayac++;
+                        document.getElementById('id02').value =sayac;
+                    }
+                  
+                   
+
+}                  
+
+        </script>
+    </body>
+</html>
